@@ -28,7 +28,7 @@
 
 
 
-```markdown
+
 # Student Survey App - Automated E2E Tests (Cypress)
 
 This repository contains the automated end-to-end (E2E) testing suite for the Student Survey Application. We use **Cypress** to ensure that our core use cases remain stable and functional across development cycles.
@@ -45,14 +45,14 @@ Ensure you have the following installed:
 ### 2. Installation
 Clone this repository and install the necessary dependencies:
 
-```bash
+
 git clone [https://github.com/FreeDev-Group/Philemon-Cohort3-Automation.git](https://github.com/FreeDev-Group/Philemon-Cohort3-Automation.git)
 cd Isaya-cypress-e2e-tests 
 or 
 cd Paul-cypress-e2e-tests
 npm install
 
-```
+
 
 ### 3. Running Tests
 
