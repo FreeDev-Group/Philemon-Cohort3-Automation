@@ -5,6 +5,7 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   allowCypressEnv: false,
   video: true,
+  videoCompression: true,
 
   e2e: {
     baseUrl: "https://student.michaelkentburns.com",
