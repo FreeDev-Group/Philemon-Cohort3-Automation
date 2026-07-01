@@ -1,0 +1,29 @@
+{
+  "name": "paul-cypress-e2e-tests",
+  "version": "1.0.0",
+  "description": "test",
+  "keywords": [
+    "cypress",
+    "test",
+    "automation"
+  ],
+  "homepage": "https://github.com/FreeDev-Group/Philemon-Cohort3-Automation#readme",
+  "bugs": {
+    "url": "https://github.com/FreeDev-Group/Philemon-Cohort3-Automation/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FreeDev-Group/Philemon-Cohort3-Automation.git"
+  },
+  "license": "ISC",
+  "author": "paul",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+  "dependencies": {
+    "cypress": "^15.18.0"
+  }
+}
