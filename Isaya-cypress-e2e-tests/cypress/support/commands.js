@@ -32,6 +32,7 @@ Cypress.Commands.add("checkAndSubmitInLoginProcess", () => {
   cy.get('[name="wp-submit"]').click();
 });
 
+// Custom command to fill in the login input fields with provided username and password
 Cypress.Commands.add(
   "loginInputFields",
   (username, password = "0000", force = false) => {
@@ -39,3 +40,19 @@ Cypress.Commands.add(
     cy.get('input[name="pwd"]').type(password, { force });
   },
 );
+
+// Custom function to perform login with valid credentials
+Cypress.Commands.add("successfullLoginProcess", () => {
+  // Load the student-mock fixture and perform login
+  cy.fixture("student-mock").then((student) => {
+    // Use the custom command to fill in the login input fields and submit the form
+    cy.loginInputFields(" " + student.username, "GGC^!jbNv1hYy8fp", true);
+
+    // Use the custom command to check the "Remember Me" checkbox and submit the login form
+    cy.checkAndSubmitInLoginProcess();
+
+    // Accept cookies if the button is present
+    cy.wait(1500); // Wait for 1.5 seconds to allow the page to load
+    cy.get(".cky-notice-btn-wrapper > .cky-btn-accept").click();
+  });
+});
