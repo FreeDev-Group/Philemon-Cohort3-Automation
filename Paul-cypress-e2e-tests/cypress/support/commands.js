@@ -33,15 +33,9 @@ Cypress.Commands.add("register", (name, email) => {
 })
 
 // this is a custom command for logging in a user with either email or username
-Cypress.Commands.add("login", (identifier, password, type = "email") => {
-  cy.visit("/User/login");
-
-  if (type === "email") {
-    cy.get("#email").type(Cypress.env("email"));
-  } else {
-    cy.get("#username").type(Cypress.env("username"));
-  }
-
-  cy.get("#password").type(Cypress.env("password"));
-  cy.contains("Login").click();
-});
+Cypress.Commands.add("login", () => {
+  cy.visit("https://student.michaelkentburns.com/wp-login.php")
+  cy.get("#user_login").type(Cypress.env("email"))
+  cy.get("#user_pass").type(Cypress.env("password"))
+  cy.get('[name="wp-submit"]').click()
+})

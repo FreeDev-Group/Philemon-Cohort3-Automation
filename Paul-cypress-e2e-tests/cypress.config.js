@@ -7,7 +7,6 @@ module.exports = defineConfig({
   allowCypressEnv: true,
   // Here are the environment variables for the test user account
   env: {
-    username: "Paulafumba.",
     email: "paulafumba58@gmail.com",
     password: "@Jesusmynum1"
   },
