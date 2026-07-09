@@ -1,21 +1,19 @@
-describe('template spec', () => {
-  it('passes', () => {
-    // this is a test to create an account for a user
-    cy.visit('/')
+/// <reference types="cypress" />
+
+describe("New student account creation", () => {
+  it("process of creating a new student account", () => {
     
-    // this is for closing the cookie pop up
-    cy.get('.cky-notice-btn-wrapper > .cky-btn-accept').should('be.visible').click();
+    const id = Date.now();
 
-    // this is for clicking on the user link and then clicking on the register as student link
-    cy.get('a').contains('User').click();
-    cy.get('a').contains('Register as Student').should('be.visible').click();
+    const name = `fakeuser${id}`;
+    const email = `fakeuser${id}@example.com`;
 
-    // this is for filling the form with the user details
-    cy.get('[name="user_login"]').type('paul afumba')
-    cy.get('[name="user_email"]').type('paulafumba5@gmail.com');
+    cy.register(name, email);
 
-// the following is the for the submit button to create the account, but in oder to avoid creating multiple accounts, I have commented it out.
+    cy.url().should('not.include', '/wp-login.php?action=register');
 
-    // cy.get('[name="wp-submit"]').click();
-  })
-})
+  cy.get('body').should('be.visible');
+
+  cy.wait(3000);
+  });
+});
