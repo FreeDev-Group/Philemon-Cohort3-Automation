@@ -1,8 +1,7 @@
 /// <reference types="cypress" />
 
 describe("New student account creation", () => {
-  it("process of creating a new student account", () => {
-    
+  it("should create a new student account", () => {
     const id = Date.now();
 
     const name = `fakeuser${id}`;
@@ -10,10 +9,10 @@ describe("New student account creation", () => {
 
     cy.register(name, email);
 
-    cy.url().should('not.include', '/wp-login.php?action=register');
+    cy.url().should("not.include", "/wp-login.php?action=register");
 
-  cy.get('body').should('be.visible');
+    cy.get("body").should("be.visible");
 
-  cy.wait(3000);
+    cy.wait(3000);
   });
 });

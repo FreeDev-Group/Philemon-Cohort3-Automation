@@ -1,19 +1,20 @@
 /// <reference types="cypress" />
 
-describe("Login in process", () => {
-  it("successful login with valid credentials", () => {
-    cy.login();
+describe("Login-in process", () => {
+
+  it("should display an error message for invalid credentials", () => {
+    cy.Unsuccessfullogin();
+
+    cy.wait(1000);
   });
 
-  it("unsuccessful login with invalid credentials", () => {
-    cy.visit("https://student.michaelkentburns.com/wp-login.php");
-    cy.get("#user_login").type("invaliduser");
-    cy.get("#user_pass").type("invalidpassword");
-    cy.get('[name="wp-submit"]').click();
-    cy.get("#login_error").should("be.visible");
 
-    cy.url().should("include", "/wp-login.php");
+  it("should log in successfully with valid credentials", () => {
+    cy.Successfullogin();
 
+    cy.url().should("not.include", "/wp-login.php");
+    cy.get("body").should("be.visible");
     cy.wait(3000);
   });
+
 });
