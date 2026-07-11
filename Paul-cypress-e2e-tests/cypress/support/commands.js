@@ -34,21 +34,28 @@ Cypress.Commands.add("register", (name, email) => {
 
 // this is a custom command for logging in a user with either email or username
 Cypress.Commands.add("Unsuccessfullogin", () => {
-cy.visit("https://student.michaelkentburns.com/wp-login.php");
-    cy.get("#user_login").type(Cypress.env("fakeusername"));
-    cy.get("#user_pass").type(Cypress.env("fakepassword"));
-    cy.get('[name="wp-submit"]').click();
-    cy.get("#login_error").should("be.visible");
-    })
+  cy.visit("https://student.michaelkentburns.com/wp-login.php");
+  cy.get("#user_login").type(Cypress.env("fakeusername"));
+  cy.get("#user_pass").type(Cypress.env("fakepassword"));
+  cy.get('[name="wp-submit"]').click();
+  cy.get("#login_error").should("be.visible");
+});
 
 Cypress.Commands.add("Successfullogin", () => {
   cy.visit("https://student.michaelkentburns.com/wp-login.php");
-  cy.get('#user_login').type(Cypress.env("username"), { force: true });
-  cy.get('#user_pass').type(Cypress.env("password"));
+  cy.get("#user_login").type(Cypress.env("username"), { force: true });
+  cy.get("#user_pass").type(Cypress.env("password"));
   cy.get('[name="wp-submit"]').click();
+  cy.url().should("not.include", "/wp-login.php");
+  cy.get("body").should("be.visible");
+  cy.wait(1000);
 });
 
 Cypress.Commands.add("logout", () => {
-  cy.visit("https://student.michaelkentburns.com/wp-login.php?action=logout");
-//   cy.get('[name="wp-submit"]').click();
+  cy.visit("https://student.michaelkentburns.com");
+  cy.get("a").contains("Student").should("be.visible").click();
+  cy.get("a").contains("Logout").should("be.visible").click();
+  cy.url().should("not.include", "/wp-login.php?action=logout");
+  cy.get("body").should("be.visible");
+  cy.wait(3000);
 });

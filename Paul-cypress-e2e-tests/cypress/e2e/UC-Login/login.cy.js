@@ -11,10 +11,6 @@ describe("Login-in process", () => {
 
   it("should log in successfully with valid credentials", () => {
     cy.Successfullogin();
-
-    cy.url().should("not.include", "/wp-login.php");
-    cy.get("body").should("be.visible");
-    cy.wait(3000);
   });
 
 });
