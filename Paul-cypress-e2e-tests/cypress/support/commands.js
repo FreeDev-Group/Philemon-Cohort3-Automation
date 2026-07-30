@@ -59,3 +59,11 @@ Cypress.Commands.add("logout", () => {
   cy.get("body").should("be.visible");
   cy.wait(3000);
 });
+
+Cypress.Commands.add("submitFeedback", (feedback) => {
+  cy.get('.cky-notice-btn-wrapper > .cky-btn-accept').click();
+    cy.get(
+      '.dynamic-main-menu > [href="https://student.michaelkentburns.com/survey/"]',
+    ).click();
+    cy.get('.post-1392 > .wp-block-group > .wp-block-post-title > a').click();
+})
