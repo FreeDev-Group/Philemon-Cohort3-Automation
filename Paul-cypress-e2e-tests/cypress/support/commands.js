@@ -48,6 +48,7 @@ Cypress.Commands.add("Successfullogin", () => {
   cy.get('[name="wp-submit"]').click();
   cy.url().should("not.include", "/wp-login.php");
   cy.get("body").should("be.visible");
+  cy.get('.cky-notice-btn-wrapper > .cky-btn-accept').click();
   cy.wait(1000);
 });
 
