@@ -10,12 +10,17 @@ module.exports = defineConfig({
 
   e2e: {
     baseUrl: "https://student.michaelkentburns.com",
+    watchForFileChanges: false,
 
     // Here are the environment variables for the test user account
     env: {
       // valid credentials
       username: "Paul Afumba.",
       password: "@JesusmyNum1",
+
+      // these are credentials for instructor
+      instructorname: "salvatore",
+      instructorpassword: "@Jesusmynum1",
 
       // invalid credentials
         fakeusername: "invaliduser",
