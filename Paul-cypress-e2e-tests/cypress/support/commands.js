@@ -1,28 +1,3 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 // this is a custom command for registering a new student account
 Cypress.Commands.add("register", (name, email) => {
@@ -50,6 +25,15 @@ Cypress.Commands.add("Successfullogin", () => {
   cy.get("body").should("be.visible");
   cy.get('.cky-notice-btn-wrapper > .cky-btn-accept').click();
   cy.wait(1000);
+});
+
+Cypress.Commands.add("instructorlogin", () => {
+  cy.visit("https://student.michaelkentburns.com/wp-login.php");
+  cy.get("#user_login").type(Cypress.env("instructorname"), { force: true });
+  cy.get("#user_pass").type(Cypress.env("instructorpassword"));
+  cy.get('[name="wp-submit"]').click();
+  // cy.url().should("not.include", "/wp-login.php");
+  cy.get("body").should("be.visible");
 });
 
 Cypress.Commands.add("logout", () => {
